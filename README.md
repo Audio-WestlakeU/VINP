@@ -4,13 +4,12 @@
 
 This repo is the official PyTorch implementation of **'VINP: Variational Bayesian Inference with Neural Speech Prior for Joint ASR-Effective Speech Dereverberation and Blind RIR Identification'**, which has been submitted to IEEE/ACM Trans. on TASLP.
 
-<!-- [Paper]() | [Code](https://github.com/Audio-WestlakeU/VINP) -->
+<!-- [Paper]() | [Code](https://github.com/Audio-WestlakeU/VINP)
 
 ## 2. Usage
 
-Temporarily unavailable
 
-<!-- ### 2.1. Prepare Environment
+### 2.1. Prepare Environment
 
 Please see `requirements.txt`.
 
@@ -100,7 +99,7 @@ sh eval/eval_all.sh [output dirpath] [output dirpath]
 
 ## 3. DEMO
 
-Please use Microsoft Edge browser or IE borwser to play the recordings.
+Please open `README.html` with Microsoft Edge browser or IE borwser to play the recordings.
 
 <table>
 <thead>
@@ -152,11 +151,18 @@ Please use Microsoft Edge browser or IE borwser to play the recordings.
       <td><a onclick="play(event)" href="Audio Samples/StoRM/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
-      <td><b>VINP-oSpatialNet (prop.)</td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td>TCN+SA+S</td>
+      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+  </tr>
+  <tr>
+      <td>oSpatialNet*</td>
+      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td><b>VINP-TCN+SA+S (prop.)</td>
@@ -165,13 +171,20 @@ Please use Microsoft Edge browser or IE borwser to play the recordings.
       <td><a onclick="play(event)" href="Audio Samples/VINP-TCN+SA+S/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
       <td><a onclick="play(event)" href="Audio Samples/VINP-TCN+SA+S/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
+  <tr>
+      <td><b>VINP-oSpatialNet (prop.)</td>
+      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+  </tr>
 
 </thead>
 </table>       
 
-<!-- ## 4. References
+<!-- ## 5. References
 
-## 5. Citations
+## 6. Citations
 
 If you find our work helpful, please cite
 ```
