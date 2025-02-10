@@ -4,6 +4,7 @@
 
 This repo is the official PyTorch implementation of **'VINP: Variational Bayesian Inference with Neural Speech Prior for Joint ASR-Effective Speech Dereverberation and Blind RIR Identification'**, which has been submitted to IEEE/ACM Trans. on TASLP.
 
+Codes will be uploaded later.
 <!-- [Paper]() | [Code](https://github.com/Audio-WestlakeU/VINP)
 
 ## 2. Usage
