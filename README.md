@@ -93,7 +93,7 @@ sh eval/eval_all.sh [output dirpath] [output dirpath]
 
 <img src="figure/Result_REVERB.png" width="1000">
 
-### Bline RIR Identification Results on SimACE
+### Blind RIR Identification Results on SimACE
 
 <img src="figure/Result_SimACE.png" width="400">
 
