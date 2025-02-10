@@ -1,6 +1,6 @@
 # VINP [Submitted to IEEE/ACM Trans. on TASLP]
 
-## 1. Introduction
+## Introduction
 
 This repo is the official PyTorch implementation of **'VINP: Variational Bayesian Inference with Neural Speech Prior for Joint ASR-Effective Speech Dereverberation and Blind RIR Identification'**, which has been submitted to IEEE/ACM Trans. on TASLP.
 
@@ -32,7 +32,7 @@ python ./dataset/gen_fpath_txt.py --i [folder path] --o [.txt path] --ext [exten
 
 #### 2.2.2. Test Set for Dereverberation
 
-Prepare the official single-channel test sets of [REVERB Challenge Dataset](https://reverb2014.dereverberation.com/).
+Prepare the official single-channel test sets of [REVERB Challenge Dataset](https://reverb2014.audiolabs-erlangen.de/).
 
 #### 2.2.3. Test Set for Blind RIR Identification
 
@@ -87,17 +87,17 @@ sh eval/eval_all.sh [output dirpath] [output dirpath]
 
 #### 2.5.3 RT60 and DRR Evaluation -->
 
-## 2. Results
+## Results
 
-### 2.1. Speech Dereverberation Results on REVERB
+### Speech Dereverberation Results on REVERB
 
 <img src="figure/Result_REVERB.png" width="1000">
 
-### 2.2. Bline RIR Identification Results on SimACE
+### Bline RIR Identification Results on SimACE
 
 <img src="figure/Result_SimACE.png" width="400">
 
-## 3. DEMO
+## DEMO
 
 Please open `README.html` with Microsoft Edge browser or IE borwser to play the recordings.
 
@@ -110,73 +110,73 @@ Please open `README.html` with Microsoft Edge browser or IE borwser to play the 
   </tr>
   <tr>
       <td>Unprocessed</td>
-      <td><a onclick="play(event)" href="Audio Samples/Reverb/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#c9302c">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/Reverb/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#c9302c">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/Reverb/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#c9302c">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/Reverb/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#c9302c">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/Reverb/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#c9302c">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/Reverb/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#c9302c">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/Reverb/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#c9302c">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/Reverb/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#c9302c">demo4</a> </td>
   </tr>
   <tr>
       <td>Oracle</td>
-      <td><a onclick="play(event)" href="Audio Samples/Oracle/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#00FF00">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/Oracle/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#00FF00">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/Oracle/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#00FF00">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/Oracle/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#00FF00">demo2</a> </td>
       <td></td>
       <td></td>
   </tr>
   <tr>
       <td>GWPE</td>
-      <td><a onclick="play(event)" href="Audio Samples/GWPE/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/GWPE/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/GWPE/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/GWPE/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/GWPE/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/GWPE/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/GWPE/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/GWPE/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td>SkipConvNet</td>
-      <td><a onclick="play(event)" href="Audio Samples/SkipConvNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/SkipConvNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/SkipConvNet/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/SkipConvNet/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/SkipConvNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/SkipConvNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/SkipConvNet/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/SkipConvNet/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td>CMGAN</td>
-      <td><a onclick="play(event)" href="Audio Samples/CMGAN/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/CMGAN/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/CMGAN/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/CMGAN/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/CMGAN/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/CMGAN/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/CMGAN/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/CMGAN/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td>StoRM</td>
-      <td><a onclick="play(event)" href="Audio Samples/StoRM/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/StoRM/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/StoRM/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/StoRM/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/StoRM/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/StoRM/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/StoRM/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/StoRM/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td>TCN+SA+S</td>
-      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/TCN+SA+S/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/TCN+SA+S/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/TCN+SA+S/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/TCN+SA+S/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/TCN+SA+S/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td>oSpatialNet*</td>
-      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/oSpatialNet/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/oSpatialNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/oSpatialNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/oSpatialNet/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/oSpatialNet/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td><b>VINP-TCN+SA+S (prop.)</td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-TCN+SA+S/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-TCN+SA+S/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-TCN+SA+S/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-TCN+SA+S/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-TCN+SA+S/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-TCN+SA+S/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-TCN+SA+S/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-TCN+SA+S/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
   <tr>
       <td><b>VINP-oSpatialNet (prop.)</td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/t36_RealData_et_for_1ch_far_room1_A_t36c020a.flac" style="color:#337ab7">demo3</a> </td>
-      <td><a onclick="play(event)" href="Audio Samples/VINP-oSpatialNet/t40_RealData_et_for_1ch_near_room1_A_t40c0209.flac" style="color:#337ab7">demo4</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-oSpatialNet/c3a_SimData_et_for_1ch_far_room3_A_c3ac0208.flac" style="color:#337ab7">demo1</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-oSpatialNet/c48_SimData_et_for_1ch_near_room3_A_c48c0212.flac" style="color:#337ab7">demo2</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-oSpatialNet/t22_RealData_et_for_1ch_far_room1_A_t22c0211.flac" style="color:#337ab7">demo3</a> </td>
+      <td><a onclick="play(event)" href="AudioSamples/VINP-oSpatialNet/t40_RealData_et_for_1ch_near_room1_A_t40c0207.flac" style="color:#337ab7">demo4</a> </td>
   </tr>
 
 </thead>
