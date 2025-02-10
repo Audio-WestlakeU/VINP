@@ -96,7 +96,7 @@ sh eval/eval_all.sh [output dirpath] [output dirpath]
 
 ### Blind RIR Identification Results on SimACE
 
-<img src="figure/Result_SimACE.png" width="400">
+<img src="figure/Result_SimACE.png" width="520">
 
 ## DEMO
 
