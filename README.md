@@ -6,9 +6,6 @@ This repo is the official PyTorch implementation of **'VINP: Variational Bayesia
 
 <!-- [Paper]() | [Code](https://github.com/Audio-WestlakeU/VINP) -->
 
-## 2. Usage
-
-Temporarily unavailable
 
 <!-- ### 2.1. Prepare Environment
 
