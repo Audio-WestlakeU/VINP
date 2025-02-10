@@ -100,7 +100,7 @@ sh eval/eval_all.sh [output dirpath] [output dirpath]
 
 ## 3. DEMO
 
-Please open `README.yaml` with Microsoft Edge browser or IE borwser to play the recordings.
+Please open `README.html` with Microsoft Edge browser or IE borwser to play the recordings.
 
 <table>
 <thead>
