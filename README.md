@@ -6,6 +6,9 @@ This repo is the official PyTorch implementation of **'VINP: Variational Bayesia
 
 <!-- [Paper]() | [Code](https://github.com/Audio-WestlakeU/VINP) -->
 
+## 2. Usage
+
+Temporarily unavailable
 
 <!-- ### 2.1. Prepare Environment
 
@@ -97,7 +100,7 @@ sh eval/eval_all.sh [output dirpath] [output dirpath]
 
 ## 3. DEMO
 
-Please open `README.html` with Microsoft Edge browser or IE borwser to play the recordings.
+Please use Microsoft Edge browser or IE borwser to play the recordings.
 
 <table>
 <thead>
