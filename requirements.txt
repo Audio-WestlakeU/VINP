@@ -44,3 +44,4 @@ torchaudio==2.2.0+cu121
 transformers==4.46.3
 triton==3.0.0
 typing-extensions==4.9.0
+sentencepiece==0.2.0

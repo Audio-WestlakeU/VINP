@@ -1,0 +1,29 @@
+{
+  "index": null,
+  "spk_num": 1,
+  "noise_num": 0,
+  "room_size_lims": [
+    [3.0, 15.0],
+    [3.0, 15.0],
+    [2.5, 6.0]
+  ],
+  "mic_zlim": [0.5, 2.0],
+  "spk_zlim": [0.5, 2.0],
+  "RT60_lim": [0.2, 1.5],
+  "rir_nums": [100000, 5000, 5000],
+  "arr_geometry": "linear",
+  "arr_radius": [0.1, 0.1],
+  "arr_rotate_lims": "auto",
+  "arr_room_center_dist": 20.0,
+  "wall_abs_weights_lims": "auto",
+  "mic_num": 1,
+  "mic_pos_var": 0,
+  "spk_arr_dist": [0.3, 3.0],
+  "fs": 16000,
+  "attn_diff": [null, null],
+  "save_to": "auto",
+  "rir_dir": "dataset/sim_rir",
+  "seed": 2024,
+  "min_dist_to_wall": 1,
+  "use_gpu": true
+}

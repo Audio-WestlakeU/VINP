@@ -1,0 +1,9 @@
+/logs/
+/InASR/examples/chime4/
+/eval/InASR/examples/realman/
+/eval/InASR/examples/wenetspeech/
+/*/__pycache__/
+/examples/
+/trainer_inferencer_1/
+/README.pdf
+*.pyc

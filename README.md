@@ -4,104 +4,125 @@
 
 This repo is the official PyTorch implementation of **'VINP: Variational Bayesian Inference with Neural Speech Prior for Joint ASR-Effective Speech Dereverberation and Blind RIR Identification'**, which has been submitted to IEEE/ACM Trans. on TASLP.
 
-Codes will be uploaded later.
-
 [Paper](https://arxiv.org/abs/2502.07205) | [Code](https://github.com/Audio-WestlakeU/VINP) | [DEMO](https://audio.westlake.edu.cn/Research/VINP.htm) 
 
-<!-- ## 2. Usage
 
+## Before Training
 
-### 2.1. Prepare Environment
+#### Requirements
 
 Please see `requirements.txt`.
 
-### 2.2. Prepare Datasets
+#### Prepare Training Set and Validation Set
 
-#### 2.2.1. Training Set and Validation Set
+Step1. Prepare clean source speech and noise recordings in .wav or .flac format.
 
-We build the training set and validation set in the same way. 
-
-1. Prepare reverberant and direct-path RIRs using `dataset/gen_rir.py` as
+Step2. Prepare reverberant and direct-path RIRs
 ```
-python ./dataset/gen_rir.py --[config_key] [config_val] 
-```
-where the details is provided in `config/rir.json`
-
-2. Prepare a list of file paths (in `.txt` format) for the source speech (in `.wav` or `.flac` format), simulated RIR pairs (in `.npz` format), and noise (in `.wav` or `.flac` format) using `dataset/gen_fpath_txt.py` as
-```
-python ./dataset/gen_fpath_txt.py --i [folder path] --o [.txt path] --ext [extension name]
+python dataset/gen_rir.py -c [config/config_gen_rir.json]
 ```
 
-#### 2.2.2. Test Set for Dereverberation
+Step3. Save the list of filepath for the source speech, simulated RIR (.npz), and noise to .txt file
+```
+python datset/gen_fpath_txt.py -i [dirpath] -o [.txt filepath] -e [filename extension]
+```
+
+#### Prepare Test Set for Dereverberation
 
 Prepare the official single-channel test sets of [REVERB Challenge Dataset](https://reverb2014.audiolabs-erlangen.de/).
 
-#### 2.2.3. Test Set for Blind RIR Identification
+#### Prepare Test Set for Blind RIR Identification
 
-1. Prepare the RIRs of the 'Single' subfolder in [ACE Challenge](http://www.ee.ic.ac.uk/naylor/ACEweb/).
+Step1. Prepare the RIRs of the 'Single' subfolder in [ACE Challenge](http://www.ee.ic.ac.uk/naylor/ACEweb/).
 
-2. Generate the test set using `dataset/noisy_dataset_1chl_torch_ACE.py` as
+Step2. Downsample the RIRs to 16kHz
 ```
-```
-
-
-### 2.3. Training
-
-1. Edit the config file (for example: `config/OSPN.toml` and `config/TCNSAS.toml`).
-
-2. Start training as
-
-```
-torchrun --standalone --nnodes=1 --nproc_per_node=[number of GPUs] train.py -c [config file path] -p [save path]
+python datset/gen_16kHz_ACE_RIR.py -i [ACE 'Single' dirpath] -o [saved dirpath]
 ```
 
-3. Resume training
-
+Step3. Save the list of filepath for the source speech, ACE RIR, and noise to .txt file
 ```
-torchrun --standalone --nnodes=1 --nproc_per_node=[number of GPUs] train.py -c [config file path] -p [save path] -r
-```
-
-### 2.4. Pretrained Checkpoints
-
-```
-torchrun --standalone --nnodes=1 --nproc_per_node=[number of GPUs] train.py -c [config file path] -p [save path] --start_ckpt [pretrained model file path]
+python datset/gen_fpath_txt.py -i [dirpath] -o [.txt filepath] -e [filename extension]
 ```
 
-### 2.4. Speech Dereverberation and Blind RIR identification
-
-### 2.5. Evaluation
-
-#### 2.5.1 Speech Quality
-
-1. Download the source codes of [DNSMOS](https://github.com/microsoft/DNS-Challenge/tree/master/DNSMOS).
-
-2. When reference waveforms are available, run
+Step4. Generate the test set (consists of reverberant speech and labels)
 ```
-sh eval/eval_all.sh [reference dirpath] [output dirpath]
+python dataset/gen_SimACE_testset.py --[keyword] [arg]
 ```
 
-Otherwise, run 
+
+## Training
+
+Step1. Edit the config file (for example: `config/config_VINP_oSpatialNet.toml` and `config/config_VINP_TCNSAS.toml`).
+
+Step2. Run
+
 ```
-sh eval/eval_all.sh [output dirpath] [output dirpath]
+# train from scratch
+torchrun --standalone --nnodes=1 --nproc_per_node=[number of GPUs] train.py -c [config filepath] -p [saved dirpath]
+
+# resume training
+torchrun --standalone --nnodes=1 --nproc_per_node=[number of GPUs] train.py -c [config filepath] -p [saved dirpath] -r 
+
+# use pretrained checkpoints
+torchrun --standalone --nnodes=1 --nproc_per_node=[number of GPUs] train.py -c [config filepath] -p [saved dirpath] --start_ckpt [pretrained model filepath]
 ```
 
-#### 2.5.2 ASR Evaluation
 
-#### 2.5.3 RT60 and DRR Evaluation -->
+## Inference
+
+Run
+```
+python enhance_rir_avg.py -c [config filepath] --ckpt [list of checkpoints] -i [reverberant speech dirpath] -o [output dirpath] -d [GPU id]
+```
+
+
+## Evaluation
+
+#### Speech Quality
+
+<!-- Step1. Download the source code of [DNSMOS](https://github.com/microsoft/DNS-Challenge/tree/master/DNSMOS) into `eval/DNSMOS`.
+
+Step2.  -->
+For SimData, run
+```
+bash eval/eval_all.sh -i [speech dirpath] -r [reference dirpath]
+```
+
+For RealData, the reference is not available. Run 
+```
+bash eval/eval_all.sh -i [speech dirpath]
+```
+
+
+#### ASR
+
+#### RT60 and DRR
+
+Step1. Estimate RT60 and DRR using
+```
+python estimate_T60_DRR.py -i [estimated RIR dirpath]
+```
+
+Step2. Run
+```
+python eval/eval_T60_or_DRR.py -o [estimated RT60 or DRR .json] -r [reference RT60 or DRR .json]
+```
 
 ## Results
 
 ### Speech Dereverberation Results on REVERB
 
 <img src="figure/Result_REVERB.png" width="1000">
+<img src="figure/Curve_REVERB.png" width="1000">
 
 ### Blind RIR Identification Results on SimACE
 
-<img src="figure/Result_SimACE.png" width="520">
+<img src="figure/Result_SimACE.png" width="500">
 
-<!-- ## 5. References-->
+<img src="figure/Curve_SimACE.png" width="400">
 
-## Citation
+## Citations
 
 If you find our work helpful, please cite
 ```

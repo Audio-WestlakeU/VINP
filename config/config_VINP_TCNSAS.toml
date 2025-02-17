@@ -1,0 +1,117 @@
+[meta]
+use_amp = false
+cudnn_enable = true
+seed = 2024
+freeze_dec = false
+use_ema = false
+
+[acoustic]
+path = "acoustics.feature.transforms"
+
+[dataloader]
+path = "dataset.noisy_dataset_1cnl_torch_repeat.MyDataloader"
+
+[loss_function]
+name = "KL_loss"
+
+[optimizer]
+type = "AdamW"
+
+[scheduler]
+type = "ExponentialLR"
+
+[trainer]
+path = "trainer_inferencer.trainer_linear.Trainer"
+
+[EM_algo]
+path = "method.vem_rir_omit3bin.VEM"
+
+[model]
+path = "model.TCN_SA.magTCNDrectAttSmooth_log.magTCNDrectAttSmooth"
+
+[acoustic.args]
+sr = 16000
+n_fft = 512
+win_len = 512
+hop_len = 128
+win_type = "hann"
+n_mel = 80
+
+[dataloader.args]
+src_pathlist = [
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/src_train.txt",
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/src_test.txt",
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/src_test.txt",
+]
+rir_pathlist = [
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/rir_train.txt",
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/rir_test.txt",
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/rir_test.txt",
+]
+noise_pathlist = [
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/noise_train.txt",
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/noise_test.txt",
+    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/noise_test.txt",
+]
+snr_range = [5, 20]
+seq_lenlist = [3.0, 6.0, 2.04]
+batchsize = [16, 4, 1]
+num_workers = 8
+seeds = [2022, 2023, 2024]
+pin_memory = true
+prefetch_factor = 1
+persistent_workers = true
+rank = 0
+sr = 16000
+noisy_proportion = 1
+
+[loss_function.args]
+zero_step = 0
+warmup_step = 100
+hold_step = 100
+beta = 1
+eps = 0.0001
+bidir = false
+
+[optimizer.args]
+lr = 0.001
+betas = [0.9, 0.99]
+
+[scheduler.args]
+gamma = 0.97
+
+[trainer.train]
+epochs = 200
+clip_grad_norm_value = 10
+save_ckpt_interval = 1
+grad_accumulation_steps = 1
+
+[trainer.validation]
+DNS_path = "eval.DNSMOS.dnsmos_local_nowav.ComputeScore"
+interval = 1
+metric_type = "OVRL"
+save_max_metric = false
+is_personalized_MOS = false
+
+[trainer.visualization]
+
+[EM_algo.args]
+CTF_len = 30
+errvar_init = 1
+max_steps = 100
+min_steps = 0
+eda_factor_mu = 0.7
+eda_factor_var = 0.7
+eda_factor_CTF = 0.0
+eda_factor_ErrVar = 0.0
+
+[model.args]
+input_size = 257
+output_size = 257
+num_channels = [512, 512, 512, 512, 512, 512, 512, 512]
+kernel_size = 3
+repeat = [1, 2, 5, 9, 1, 2, 5, 9, 1, 2, 5, 9, 1, 2, 5, 9]
+num_heads = 4
+embed_size = 256
+dropout1 = 0
+dropout2 = 0
