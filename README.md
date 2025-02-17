@@ -81,11 +81,10 @@ python enhance_rir_avg.py -c [config filepath] --ckpt [list of checkpoints] -i [
 
 ## Evaluation
 
+Evaluation results are saved to the output folder.
+
 #### Speech Quality
 
-<!-- Step1. Download the source code of [DNSMOS](https://github.com/microsoft/DNS-Challenge/tree/master/DNSMOS) into `eval/DNSMOS`.
-
-Step2.  -->
 For SimData, run
 ```
 bash eval/eval_all.sh -i [speech dirpath] -r [reference dirpath]
