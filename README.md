@@ -7,18 +7,7 @@ This repo is the official PyTorch implementation of **'VINP: Variational Bayesia
 [Paper](https://arxiv.org/abs/2502.07205) | [Code](https://github.com/Audio-WestlakeU/VINP) | [DEMO](https://audio.westlake.edu.cn/Research/VINP.htm) 
 
 
-## Results
 
-### Speech Dereverberation Results on REVERB
-
-<img src="figure/Result_REVERB.png" width="1000">
-<img src="figure/Curve_REVERB.png" width="1000">
-
-### Blind RIR Identification Results on SimACE
-
-<img src="figure/Result_SimACE.png" width="500">
-
-<img src="figure/Curve_SimACE.png" width="400">
 
 ## Before Training
 
@@ -110,6 +99,16 @@ bash eval/eval_all.sh -i [speech dirpath]
 
 #### ASR
 
+For SimData, run
+```
+python eval/eval_ASR_REVERB_SimData.py -i [speech dirpath] -m [whisper model name (tiny small medium)]
+```
+
+For RealData, run
+```
+python eval/eval_ASR_REVERB_RealData.py -i [speech dirpath] -m [whisper model name (tiny small medium)]
+```
+
 #### RT60 and DRR
 
 Step1. Estimate RT60 and DRR using
@@ -122,7 +121,18 @@ Step2. Run
 python eval/eval_T60_or_DRR.py -o [estimated RT60 or DRR .json] -r [reference RT60 or DRR .json]
 ```
 
+## Results
 
+### Speech Dereverberation Results on REVERB
+
+<img src="figure/Result_REVERB.png" width="1000">
+<img src="figure/Curve_REVERB.png" width="1000">
+
+### Blind RIR Identification Results on SimACE
+
+<img src="figure/Result_SimACE.png" width="500">
+
+<img src="figure/Curve_SimACE.png" width="400">
 
 ## Citations
 
