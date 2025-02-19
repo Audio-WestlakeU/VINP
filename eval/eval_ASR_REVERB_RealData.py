@@ -18,7 +18,7 @@ def main(input_dir:str,scp_file:str,model:str):
     f.close()
 
     time.sleep(1)
-    os.system(f"CUDA_VISIBLE_DEVICES=0 eval/InASR/examples/reverb/evaluate_via_whisper_RealData.sh {input_dir} {model}")
+    os.system(f"eval/ASR_whisper/examples/reverb/evaluate_via_whisper_RealData.sh {input_dir} {model}")
     time.sleep(1)
 
 if __name__ == "__main__":
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-r",
         "--scp_file",
-        default='eval/InASR/examples/reverb/data/et_real_1ch/wav.scp'
+        default='eval/ASR_whisper/examples/reverb/data/et_real_1ch/wav.scp'
     )
     args = parser.parse_args()
 

@@ -1,3 +1,7 @@
+# @author: Pengyu Wang
+# @email: wangpengyu@westlake.edu.cn
+# @description: loss functions.
+
 import torch.nn as nn
 import torch
 import math
@@ -18,30 +22,7 @@ class JS_loss(nn.Module):
         ret = 1 / 2 * (x / y + y / x) - 1
 
         return torch.sum(ret) / B / T / F
-    
-class KL_loss_power(nn.Module):
 
-    def __init__(self, eps, bidir=False, *args, **kwargs) -> None:
-        super().__init__()
-        self.eps = eps
-        self.bidir = bidir
-
-    def forward(self, y, x):
-        B, C, F, T = x.shape
-        assert C == 1
-        x = x + self.eps
-        y = y + self.eps
-        # x = (x**2).clamp(self.eps)
-        # y = (y**2).clamp(self.eps)
-        if self.bidir == False:
-            ret = torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
-        elif self.bidir == True:
-            ret = (
-                torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
-                + torch.sum(torch.log(x) - torch.log(y) + y / x - 1)
-            ) / 2
-
-        return ret / B / T / F
 
 class KL_loss(nn.Module):
 
@@ -53,10 +34,8 @@ class KL_loss(nn.Module):
     def forward(self, y, x):
         B, C, F, T = x.shape
         assert C == 1
-        x = x.abs()**2 + self.eps
-        y = y.abs()**2 + self.eps
-        # x = (x**2).clamp(self.eps)
-        # y = (y**2).clamp(self.eps)
+        x = x.abs() ** 2 + self.eps
+        y = y.abs() ** 2 + self.eps
         if self.bidir == False:
             ret = torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
         elif self.bidir == True:
@@ -66,7 +45,8 @@ class KL_loss(nn.Module):
             ) / 2
 
         return ret / B / T / F
-    
+
+
 class KL_mse_loss(nn.Module):
 
     def __init__(self, eps, bidir=False, *args, **kwargs) -> None:
@@ -77,11 +57,9 @@ class KL_mse_loss(nn.Module):
     def forward(self, y, x):
         B, C, F, T = x.shape
         assert C == 1
-        mse = (x.pow(1/3)-y.pow(1/3)).pow(2).mean()
-        x = x.abs()**2 + self.eps
-        y = y.abs()**2 + self.eps
-        # x = (x**2).clamp(self.eps)
-        # y = (y**2).clamp(self.eps)
+        mse = (x.pow(1 / 3) - y.pow(1 / 3)).pow(2).mean()
+        x = x.abs() ** 2 + self.eps
+        y = y.abs() ** 2 + self.eps
         if self.bidir == False:
             ret = torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
         elif self.bidir == True:
@@ -90,7 +68,8 @@ class KL_mse_loss(nn.Module):
                 + torch.sum(torch.log(x) - torch.log(y) + y / x - 1)
             ) / 2
 
-        return ret / B / T / F+mse*1
+        return ret / B / T / F + mse * 1
+
 
 class KL_loss_meanscale(nn.Module):
 
@@ -103,12 +82,10 @@ class KL_loss_meanscale(nn.Module):
         B, C, F, T = x.shape
         assert C == 1
         x = x**2
-        scale = x.mean()*self.eps
+        scale = x.mean() * self.eps
         y = y**2
         x = x + scale
-        y = y+scale
-        # x = (x**2).clamp(self.eps)
-        # y = (y**2).clamp(self.eps)
+        y = y + scale
         if self.bidir == False:
             ret = torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
         elif self.bidir == True:
@@ -118,6 +95,7 @@ class KL_loss_meanscale(nn.Module):
             ) / 2
 
         return ret / B / T / F
+
 
 class KL_loss_maxscale(nn.Module):
 
@@ -129,17 +107,17 @@ class KL_loss_maxscale(nn.Module):
         B, C, F, T = x.shape
         assert C == 1
         x = x**2
-        eps,_ = x.max(3,keepdim=True)
-        eps,_ = eps.max(2,keepdim=True)
-        eps,_ = eps.max(1,keepdim=True)
-        eps = eps*self.eps
+        eps, _ = x.max(3, keepdim=True)
+        eps, _ = eps.max(2, keepdim=True)
+        eps, _ = eps.max(1, keepdim=True)
+        eps = eps * self.eps
         y = y**2
         x = x + eps
         y = y + eps
         ret = torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
 
-
         return ret / B / T / F
+
 
 class WD_loss(nn.Module):
 
@@ -147,8 +125,6 @@ class WD_loss(nn.Module):
         super(WD_loss, self).__init__()
 
     def forward(self, x, y):
-        # x = x.exp()
-        # y = y.exp()
 
         ret = (torch.sqrt(x) - torch.sqrt(y)).pow(2)
 
@@ -164,10 +140,8 @@ class IS_loss(nn.Module):
     def forward(self, output, target):
         B, C, F, T = target.shape
         assert C == 1
-        target = target.abs()**2 + self.eps
-        output = output.abs()**2 + self.eps
-        # target = (target**2).clamp(self.eps)
-        # output = (output**2).clamp(self.eps)
+        target = target.abs() ** 2 + self.eps
+        output = output.abs() ** 2 + self.eps
 
         ret = torch.sum(target / output - torch.log(target) + torch.log(output) - 1)
 

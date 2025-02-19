@@ -1,3 +1,7 @@
+# @author: Pengyu Wang
+# @email: wangpengyu@westlake.edu.cn
+# @description: code for generating SimACE testset.
+
 import numpy as np
 from base_dataset_torch import BaseDataset
 from utils import MyDistributedSampler

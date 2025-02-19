@@ -1,10 +1,13 @@
 /logs/
-/InASR/examples/chime4/
-/eval/InASR/examples/realman/
-/eval/InASR/examples/wenetspeech/
+/eval/ASR_whisper/examples/chime4/
+/eval/ASR_whisper/examples/realman/
+/eval/ASR_whisper/examples/wenetspeech/
 /*/__pycache__/
 /examples/
-/trainer_inferencer_1/
 /README.pdf
 *.pyc
 /transform_flac_to_wav.py
+/model/TCN_SA/magTCNDrectAttSmooth.py
+/trainer_inferencer/base_trainer.py
+/trainer_inferencer/trainer.py
+/train.py

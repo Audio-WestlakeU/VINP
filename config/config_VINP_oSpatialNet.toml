@@ -3,13 +3,12 @@ use_amp = false
 cudnn_enable = true
 seed = 2024
 use_ema = false
-comment = "No comment"
 
 [acoustic]
 path = "acoustics.feature.transforms"
 
 [dataloader]
-path = "dataset.noisy_dataset_1cnl_torch_repeat.MyDataloader"
+path = "dataset.noisy_dataset_1cnl.MyDataloader"
 
 [loss_function]
 name = "KL_loss"
@@ -21,7 +20,7 @@ type = "AdamW"
 type = "ExponentialLR"
 
 [trainer]
-path = "trainer_inferencer.trainer_linear.Trainer"
+path = "trainer_inferencer.trainer.Trainer"
 
 [EM_algo]
 path = "method.vem_rir_omit3bin.VEM"
@@ -39,22 +38,22 @@ n_mel = 80
 
 [dataloader.args]
 src_pathlist = [
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/src_train.txt",
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/src_test.txt",
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/src_test.txt",
+    "config/src_train.txt",
+    "config/src_valid.txt",
+    "config/src_test.txt",
 ]
 rir_pathlist = [
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/rir_train.txt",
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/rir_test.txt",
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/rir_test.txt",
+    "config/rir_train.txt",
+    "config/rir_valid.txt",
+    "config/rir_test.txt",
 ]
 noise_pathlist = [
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/noise_train.txt",
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/noise_test.txt",
-    "/mnt/inspurfs/home/wangpengyu/N-RKEM/NeGI/config/noise_test.txt",
+    "config/noise_train.txt",
+    "config/noise_valid.txt",
+    "config/noise_test.txt",
 ]
 snr_range = [5, 20]
-seq_lenlist = [3.0, 6.0, 2.04]
+seq_lenlist = [3.0, 6.0, 3.0]
 batchsize = [4, 4, 1]
 num_workers = 8
 seeds = [2022, 2023, 2024]
@@ -87,8 +86,8 @@ save_ckpt_interval = 1
 grad_accumulation_steps = 1
 
 [trainer.validation]
-
-[trainer.visualization]
+interval = 1
+save_max_metric = false
 
 [EM_algo.args]
 CTF_len = 30
