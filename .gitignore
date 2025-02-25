@@ -12,3 +12,11 @@
 /trainer_inferencer/trainer.py
 /train.py
 /eval/ASR_whisper/examples/reverb/data/
+/copy_and_transform.sh
+/compare_src/
+/enhance_WPE.py
+/enhance_TCN-SA-S.py
+/blind_rt60_est.py
+/trainer_inferencer/trainer_FSN_TCNSA.py
+/acoustics/feature_TCNSA.py
+/webpage/
