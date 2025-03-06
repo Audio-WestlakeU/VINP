@@ -22,11 +22,11 @@ This work proposes a variational Bayesian inference framework with neural speech
 
 <img src="figure/Result_SimACE.png" width="400">
 
-<img src="figure/Curve_SimACE.png" width="300">
+<img src="figure/Curve_SimACE.png" width="350">
 
 **Computational Cost**
 
-<img src="figure/cost.png" width="400">
+<img src="figure/cost.png" width="380">
 
 ## Before Training
 
