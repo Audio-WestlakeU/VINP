@@ -32,7 +32,7 @@ This work proposes a variational Bayesian inference framework with neural speech
 
 **Requirements**
 
-Please see `requirements.txt`.
+- Please see `requirements.txt`.
 
 **Prepare Training Set and Validation Set**
 
@@ -50,7 +50,7 @@ python datset/gen_fpath_txt.py -i [dirpath] -o [.txt filepath] -e [filename exte
 
 **Prepare Test Set for Dereverberation**
 
-Prepare the official single-channel test sets of [REVERB Challenge Dataset](https://reverb2014.audiolabs-erlangen.de/).
+- Prepare the official single-channel test sets of [REVERB Challenge Dataset](https://reverb2014.audiolabs-erlangen.de/).
 
 **Prepare Test Set for Blind RIR Identification**
 
