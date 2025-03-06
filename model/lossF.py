@@ -300,3 +300,82 @@ class KL_IS_loss(nn.Module):
             )
 
         return ret
+
+
+
+
+class KL_loss_smooth(nn.Module):
+
+    def __init__(self, eps, bidir=False, smooth_kernel_size:int=3,sigma:float=1, *args, **kwargs) -> None:
+        super().__init__()
+        self.eps = eps
+        self.bidir = bidir
+        self.smooth_kernel_size = smooth_kernel_size
+        self.sigma=sigma
+    def get_gaussian_kernel(self,kernel_size=3, sigma=1, channels=3):
+        """
+        生成二维高斯核
+        :param kernel_size: 高斯核的大小
+        :param sigma: 高斯分布的标准差
+        :param channels: 输入图像的通道数
+        :return: 二维高斯核
+        """
+        # 创建一个一维的高斯分布
+        x_coord = torch.arange(kernel_size)
+        x_grid = x_coord.repeat(kernel_size).view(kernel_size, kernel_size)
+        y_grid = x_grid.t()
+        xy_grid = torch.stack([x_grid, y_grid], dim=-1).float()
+
+        mean = (kernel_size - 1) / 2.
+        variance = sigma ** 2.
+
+        # 计算二维高斯分布
+        gaussian_kernel = (1. / (2. * torch.pi * variance)) * \
+                        torch.exp(
+                            -torch.sum((xy_grid - mean) ** 2., dim=-1) / \
+                            (2 * variance)
+                        )
+        # 归一化高斯核，使其总和为 1
+        gaussian_kernel = gaussian_kernel / torch.sum(gaussian_kernel)
+
+        # 扩展维度以匹配卷积层的输入和输出通道
+        gaussian_kernel = gaussian_kernel.view(1, 1, kernel_size, kernel_size)
+        gaussian_kernel = gaussian_kernel.repeat(channels, 1, 1, 1)
+
+        return gaussian_kernel
+
+    def gaussian_filter(self,image, kernel_size=3, sigma=1):
+        """
+        对输入图像应用二维高斯滤波器
+        :param image: 输入图像，形状为 (batch_size, channels, height, width)
+        :param kernel_size: 高斯核的大小
+        :param sigma: 高斯分布的标准差
+        :return: 经过高斯滤波后的图像
+        """
+        channels = image.shape[1]
+        gaussian_kernel = self.get_gaussian_kernel(kernel_size, sigma, channels)
+        gaussian_kernel = gaussian_kernel.to(image.device)
+
+        # 使用卷积操作应用高斯滤波器
+        padded_image = torch.nn.functional.pad(image, (kernel_size // 2, kernel_size // 2, kernel_size // 2, kernel_size // 2), mode='reflect')
+        filtered_image = torch.nn.functional.conv2d(padded_image, weight=gaussian_kernel, groups=channels)
+
+        return filtered_image
+    def forward(self, y, x):
+        B, C, F, T = x.shape
+        assert C == 1
+        x = x.abs() ** 2 + self.eps
+        y = y.abs() ** 2 + self.eps
+        
+        x = self.gaussian_filter(x,self.smooth_kernel_size,self.sigma)
+        y = self.gaussian_filter(y,self.smooth_kernel_size,self.sigma)
+        
+        if self.bidir == False:
+            ret = torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
+        elif self.bidir == True:
+            ret = (
+                torch.sum(torch.log(y) - torch.log(x) + x / y - 1)
+                + torch.sum(torch.log(x) - torch.log(y) + y / x - 1)
+            ) / 2
+
+        return ret / B / T / F

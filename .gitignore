@@ -20,3 +20,10 @@
 /trainer_inferencer/trainer_FSN_TCNSA.py
 /acoustics/feature_TCNSA.py
 /webpage/
+/trainer_inferencer/trainer_linear_complex.py
+/config/config_oSpatialNet.toml
+/enhance_oSpatialNet.py
+/ckpt/compare_ckpt/
+/trainer_inferencer/trainer_linear_sisdr.py
+/config
+/model
