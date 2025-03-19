@@ -72,7 +72,7 @@ python dataset/gen_SimACE_testset.py --[keyword] [arg]
 ```
 
 
-## Training (codes for training will be uploaded later)
+## Training
 
 - Edit the config file (for example: `config/config_VINP_oSpatialNet.toml` and `config/config_VINP_TCNSAS.toml`).
 

@@ -8,9 +8,6 @@
 *.pyc
 /transform_flac_to_wav.py
 /model/TCN_SA/magTCNDrectAttSmooth.py
-/trainer_inferencer/base_trainer.py
-/trainer_inferencer/trainer.py
-/train.py
 /eval/ASR_whisper/examples/reverb/data/
 /copy_and_transform.sh
 /compare_src/
