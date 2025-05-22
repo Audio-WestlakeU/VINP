@@ -26,7 +26,7 @@ def main(output_fpath:str,reference_fpath:str):
     RMSE_final = np.sqrt(np.mean(MSE_list))
     
     with open(output_fpath+'_eval.txt','w',encoding='utf-8') as f:
-        print(f'MAE:{MAE_final},MSE:{RMSE_final}',file=f)
+        print(f'MAE:{MAE_final},RMSE:{RMSE_final}',file=f)
 
 
 if __name__ == "__main__":

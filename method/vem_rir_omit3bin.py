@@ -209,6 +209,7 @@ class VEM:
             if loglikeli_now >= loglikeli:
                 loglikeli = loglikeli_now
                 Mu_ret = Mu
+                CTF_ret = CTF
                 patience = 0
 
             elif loglikeli_now < loglikeli and patience < self.patience:
@@ -219,13 +220,13 @@ class VEM:
         result[:, time_start:time_stop] = Mu_ret
         result[0:3, :] *= 0
 
-        CTF[0:3, :] *= 0
-        CTF = CTF.unsqueeze(2)  # [F,1,T]
+        CTF_ret[0:3, :] *= 0
+        CTF_ret = CTF_ret.unsqueeze(2)  # [F,1,T]
 
         sinesweep_spec = pad(sinesweep_spec, (self.L - 1, 0))  # [F,T+L-1]
         sinesweep_spec = sinesweep_spec.unfold(1, self.L, 1)  # [F,T,L] complex
 
-        ir_spec = torch.matmul(sinesweep_spec, CTF).squeeze()
+        ir_spec = torch.matmul(sinesweep_spec, CTF_ret).squeeze()
         ir = TF.istft(ir_spec, "complex")
 
         rir = torchaudio.functional.fftconvolve(invfilter, ir, mode="full").to("cpu")
