@@ -17,7 +17,7 @@ hyp_cleaner=whisper_en
 nj=1
 test_sets="et_simu_1ch"
 # decode_options is used in Whisper model's transcribe method
-decode_options="{language: en, task: transcribe, temperature: 0, beam_size: 10, fp16: False}"
+decode_options="{language: en, task: transcribe, beam_size: 5, best_of: 20, fp16: False, condition_on_previous_text: False}"
 
 for x in ${test_sets}; do
     wavscp=./examples/reverb/data/${x}/wav.scp    # path to wav.scp
