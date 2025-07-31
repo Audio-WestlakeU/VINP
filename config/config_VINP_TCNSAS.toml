@@ -1,0 +1,96 @@
+[meta]
+use_amp = false
+cudnn_enable = true
+seed = 2024
+use_ema = false
+
+[acoustic]
+path = "acoustics.feature.transforms"
+
+[dataloader]
+path = "fixed.dataset.noisy_dataset_1cnlfixed.MyDataloader"
+
+[loss_function]
+name = "KL_loss"
+
+[optimizer]
+type = "AdamW"
+
+[scheduler]
+type = "ExponentialLR"
+
+[trainer]
+path = "trainer_inferencer.trainer.Trainer"
+
+[EM_algo]
+path = "method.vem_rir_omit3bin_nb.VEM"
+
+[model]
+path = "model.TCN_SA.magTCNDrectAttSmooth_log.magTCNDrectAttSmooth"
+
+[acoustic.args]
+sr = 16000
+n_fft = 512
+win_len = 512
+hop_len = 128
+win_type = "hann"
+n_mel = 80
+
+[dataloader.args]
+train_dirpath = "/data/home/wangpengyu/DATASET/fixed_200h_50w/train"
+valid_dirpath = "/data/home/wangpengyu/DATASET/fixed_200h_50w/valid"
+seq_len = [4, 4]
+sr = 16000
+max_pause = 0.5
+batchsize = [16, 4]
+num_workers = 4
+prefetch_factor = 2
+pin_memory = true
+persistent_workers = true
+seed = 2024
+
+[loss_function.args]
+zero_step = 0
+warmup_step = 100
+hold_step = 100
+beta = 1
+eps = 1e-4
+bidir = false
+
+[optimizer.args]
+lr = 0.001
+betas = [0.9, 0.99]
+
+[scheduler.args]
+gamma = 0.97
+
+[trainer.train]
+epochs = 500
+clip_grad_norm_value = 10
+save_ckpt_interval = 1
+grad_accumulation_steps = 1
+
+[trainer.validation]
+interval = 1
+save_max_metric = false
+
+[EM_algo.args]
+CTF_len = 30
+errvar_init = 1
+max_steps = 100
+min_steps = 0
+eda_factor_mu = 0.7
+eda_factor_var = 0.7
+eda_factor_CTF = 0.0
+eda_factor_ErrVar = 0.0
+
+[model.args]
+input_size = 257
+output_size = 257
+num_channels = [512, 512, 512, 512, 512, 512, 512, 512]
+kernel_size = 3
+repeat = [1, 2, 5, 9, 1, 2, 5, 9, 1, 2, 5, 9, 1, 2, 5, 9]
+num_heads = 4
+embed_size = 256
+dropout1 = 0
+dropout2 = 0
