@@ -111,7 +111,7 @@ class VEM:
         # scaling = num_sample * (w1 / w2 - 1) / (2 * np.log(w1 / w2))
         invfilter=invfilter / scaling
         
-        sinesweep=self.apply_ramp(sinesweep, ramp_sample=4096)
+        sinesweep=self.apply_ramp(sinesweep, left_ramp_sample=256,right_ramp_sample=128)
         # invfilter=self.apply_ramp(invfilter, ramp_percent=5)
         
         self.sinesweep = pad(torch.from_numpy(sinesweep).float(),(512,512))
@@ -517,7 +517,7 @@ class VEM:
         CTF_f_PartB = CTF_f_PartB_para.mean(0)  # a:2T
 
         CTF_f_ret = torch.matmul(
-            CTF_f_PartB, torch.inverse(CTF_f_PartA)
+            CTF_f_PartB, torch.inverse(CTF_f_PartA+torch.eye(self.L, device=self.device, dtype=self.dtype) * 1e-5)
         ).squeeze()  # m:4*4/3*L^3+4L^2 a:2L^3+2L^2
 
         return CTF_f_ret
@@ -594,7 +594,7 @@ class VEM:
         )[self.L:-self.L]
 
         return likeli_para.mean()
-    def apply_ramp(self,signal, ramp_sample=512):
+    def apply_ramp(self,signal, left_ramp_sample=512,right_ramp_sample=512):
         """
         对信号的前后ramp_percent添加渐入渐出
         
@@ -606,22 +606,25 @@ class VEM:
         处理后的信号
         """
         n_samples = len(signal)
-        ramp_length = ramp_sample
+        left_ramp_length = left_ramp_sample
+        right_ramp_length = right_ramp_sample
         
-        if ramp_length <= 0:
-            return signal
+        
+        # if ramp_length <= 0:
+        #     return signal
         
         # 生成渐入渐出函数
         # x = np.arange(ramp_length*2)
         
-        ramp=np.hanning(ramp_length*2)[:ramp_length]
+        left_ramp=np.hanning(left_ramp_length*2)[:left_ramp_length]
+        right_ramp=np.hanning(right_ramp_length*2)[:right_ramp_length]
 
         # ramp = 0.5 * (1 - np.cos(np.pi * x / ramp_length))
 
         
         # 应用渐入渐出
         output = signal.copy()
-        output[:ramp_length] *= ramp           # 渐入
-        output[-ramp_length:] *= ramp[::-1]    # 渐出
+        output[:left_ramp_length] *= left_ramp           # 渐入
+        output[-right_ramp_length:] *= right_ramp[::-1]    # 渐出
         
         return output

@@ -98,8 +98,8 @@ class MyDataset(BaseDataset):
 
             idx = torch.argmax(rir.abs())
 
-            idx_beg = max(0, idx - int(self.sr * 0.0020))
-            idx_end = idx + int(self.sr * 0.0020)
+            idx_beg = max(0, idx)
+            idx_end = idx_beg + 1
             
             idx_begSNR = max(0, idx - int(self.sr * 0.001))
             idx_endSNR = idx + int(self.sr * 0.05) + 1
