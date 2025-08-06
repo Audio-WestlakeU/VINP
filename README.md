@@ -14,11 +14,8 @@ This work proposes a variational Bayesian inference framework with neural speech
 
 **Speech Dereverberation Results**
 
-PESQ, ESTOI, DNSMOS and WER
-
 <img src="figure/Result_REVERB.png" width="1000">
 
-Subjective listening test
 
 <img src="figure/Result_REVERB_subjective.png" width="300">
 
