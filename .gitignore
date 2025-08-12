@@ -1,6 +1,6 @@
 *.pyc
 /logs/*
-/comp_src/*
+/comp_src
 /eval/eval_objective_LSD.py
 /eval/vad.py
 /config/path/*
@@ -8,3 +8,6 @@ enhance_oSpatialNet.py
 blind_rt60_est.py
 enhance_TCN-SA-S.py
 enhance_WPE.py
+/examples
+/method/review3.py
+/config/config_VINP_TCNSAS_review3.toml

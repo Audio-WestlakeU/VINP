@@ -517,7 +517,7 @@ class VEM:
         CTF_f_PartB = CTF_f_PartB_para.mean(0)  # a:2T
 
         CTF_f_ret = torch.matmul(
-            CTF_f_PartB, torch.inverse(CTF_f_PartA+torch.eye(self.L, device=self.device, dtype=self.dtype) * 1e-5)
+            CTF_f_PartB, torch.inverse(CTF_f_PartA)
         ).squeeze()  # m:4*4/3*L^3+4L^2 a:2L^3+2L^2
 
         return CTF_f_ret
