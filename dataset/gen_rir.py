@@ -829,7 +829,7 @@ if __name__ == "__main__":
     if args.config:
         with open(args.config, "r") as json_cfg:
             json_arg = json.load(json_cfg)
-            vars(args).update(json_cfg)
+            vars(args).update(json_arg)
 
     # get paramters for function `generate_rir_cfg_list`
     sig = inspect.signature(generate_rir_cfg_list)
