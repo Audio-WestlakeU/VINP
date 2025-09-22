@@ -4,7 +4,7 @@
 
 This repo is the official PyTorch implementation of **'VINP: Variational Bayesian Inference with Neural Speech Prior for Joint ASR-Effective Speech Dereverberation and Blind RIR Identification'**
 
-[Paper](https://arxiv.org/abs/2502.07205v2) | [Code](https://github.com/Audio-WestlakeU/VINP) | [DEMO](https://audio.westlake.edu.cn/Research/VINP.htm) 
+[Paper](https://arxiv.org/abs/2502.07205) | [Code](https://github.com/Audio-WestlakeU/VINP) | [DEMO](https://audio.westlake.edu.cn/Research/VINP.htm) 
 
 This work proposes a variational Bayesian inference framework with neural speech prior for joint ASR-effective speech dereverberation and blind RIR identification. By combining the prior distribution of anechoic speech predicted by an arbitrary discriminative dereverberation DNN with the reverberant recording, VINP employs VBI to solve the proposed CTF-based probabilistic graphical model and further estimate the anechoic speech and RIR. The usage of VBI avoids the direct utilization of DNN output but still utilizes its powerful nonlinear modeling capability, and proves to be effective for ASR without any joint training with the ASR system. Experimental results demonstrate that the proposed method achieves superior or competitive performance against the SOTA approaches in both tasks. 
 
