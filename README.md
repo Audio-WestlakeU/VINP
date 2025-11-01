@@ -147,7 +147,7 @@ Evaluation results are saved to the output folder.
 
 If you find our work helpful, please cite
 ```
-@ARTICLE{11206470,
+@ARTICLE{VINP,
   author={Wang, Pengyu and Fang, Ying and Li, Xiaofei},
   journal={IEEE Transactions on Audio, Speech and Language Processing}, 
   title={VINP: Variational Bayesian Inference With Neural Speech Prior for Joint ASR-Effective Speech Dereverberation and Blind RIR Identification}, 
@@ -155,6 +155,5 @@ If you find our work helpful, please cite
   volume={33},
   number={},
   pages={4387-4399},
-  keywords={Probabilistic logic;Reverberation;Recording;Nonlinear filters;Maximum likelihood detection;Noise;Estimation;Bayes methods;Microphones;Time-domain analysis;Speech dereverberation;room impulse response identification;variational Bayesian inference;convolutive transfer function approximation;deep learning},
   doi={10.1109/TASLPRO.2025.3622947}}
 ```
