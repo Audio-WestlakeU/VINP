@@ -116,7 +116,7 @@ class VEM:
         
         self.sinesweep = pad(torch.from_numpy(sinesweep).float(),(512,512))
         
-        sf.write('/mnt/inspurfs/home/wangpengyu/VINP-final/sinesweep.wav', self.sinesweep.numpy().squeeze(), self.sr)
+        # sf.write('/mnt/inspurfs/home/wangpengyu/VINP-final/sinesweep.wav', self.sinesweep.numpy().squeeze(), self.sr)
         # exit()
         
         self.invfilter = pad(torch.from_numpy(invfilter).float(),(512,512))
