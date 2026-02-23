@@ -18,8 +18,8 @@ def load_wav(filename: str, sr_target: int = 16000) -> torch.Tensor:
     Returns:
         np.ndarray: loaded waveform
     """
-    wav_path = Path(filename)
-    assert wav_path.exists(), f"'{wav_path}' does not exist"
+    wav_path = filename
+    # assert wav_path.exists(), f"'{wav_path}' does not exist"
     wav_info = torchaudio.info(wav_path, backend="soundfile")
     sr_raw = wav_info.sample_rate
     n_ch = wav_info.num_channels
